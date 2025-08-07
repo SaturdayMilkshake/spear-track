@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ic4fy1ysjc3"]
+
+[ext_resource type="Script" uid="uid://rxvincyldhdr" path="res://scenes/managers/game_manager/game_manager.gd" id="1_4tpuv"]
+[ext_resource type="Texture2D" uid="uid://w65elqybc0ae" path="res://assets/Silverstone_Circuit_vector_map.png" id="2_imdmq"]
+[ext_resource type="PackedScene" uid="uid://bobmchlly08fc" path="res://scenes/managers/position_manager/position_manager.tscn" id="2_kiihf"]
+[ext_resource type="PackedScene" uid="uid://boqp1w60axej0" path="res://scenes/race_follower/race_follower.tscn" id="4_6fqxo"]
+
+[sub_resource type="Curve2D" id="Curve2D_imdmq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10.2394, 17.3733, 14.2448, 6.01448, -14.2448, -6.01448, -209.761, -151.627, 0, 0, 0, 0, -219.761, -205.627, -1.53211, 26.8119, 1.53211, -26.8119, -208.761, -284.627, 0, 0, 0, 0, -223.761, -334.627, 4.30468, 13.1577, -4.30468, -13.1577, -311.761, -449.627, 0, 0, 0, 0, -303.761, -470.627, 0, 0, 0, 0, -234.761, -491.627, 4.2259, 9.92595, -4.2259, -9.92595, -221.761, -506.627, 0, 0, 0, 0, -237.761, -523.627, 0, 0, 0, 0, -291.761, -541.627, 4.79939, -0.590694, -4.79939, 0.590694, -343.761, -544.627, 0, 0, 0, 0, -358.761, -538.627, 0, 0, 0, 0, -657.761, -211.627, -0.575548, -6.04325, 0.575548, 6.04325, -664.761, -172.627, -13.0937, 0.431661, 13.0937, -0.431661, -643.761, -140.627, 0, 0, 0, 0, -581.761, -132.627, -0.951319, -11.0591, 0.951319, 11.0591, -562.761, -110.627, 7.72947, -12.2482, -7.72947, 12.2482, -565.761, -78.6267, 0, 0, 0, 0, -593.761, -64.6267, 0, 0, 0, 0, -619.761, -69.6267, 0, 0, 0, 0, -707.761, -114.627, 0, 0, 0, 0, -739.761, -141.627, 0, 0, 0, 0, -763.761, -175.627, 0, 0, 0, 0, -776.761, -215.627, 1.56693, 5.3972, -1.56693, -5.3972, -802.761, -504.627, -6.61592, 10.098, 6.61592, -10.098, -789.761, -537.627, 0, 0, 0, 0, -756.761, -562.627, -6.10928, -5.26662, 6.10928, 5.26662, -613.761, -596.627, -6.74128, 0.631995, 6.74128, -0.631995, -445.761, -607.627, 0, 0, 0, 0, -389.761, -634.627, -3.15997, -6.10928, 3.15997, 6.10928, -347.761, -630.627, 0, 0, 0, 0, -298.761, -611.627, -0.631995, 6.31995, 0.631995, -6.31995, -257.761, -614.627, -6.95194, -1.05332, 6.95194, 1.05332, -202.761, -645.627, 1.05332, -3.79197, -1.05332, 3.79197, -163.761, -636.627, 0.523225, -10.2029, -0.523225, 10.2029, -142.761, -607.627, -5.95312, -11.9244, 5.95312, 11.9244, -117.761, -568.627, -4.97935, -0.766054, 4.97935, 0.766054, 242.239, -370.627, 0, 0, 0, 0, 347.239, -301.627, 0, 0, 0, 0, 368.239, -278.627, -0.316551, -12.1872, 0.316551, 12.1872, 376.239, -242.627, 2.69069, 2.84896, -2.69069, -2.84896, 356.239, -202.627, 0, 0, 0, 0, 337.239, -189.627, 0, 0, 0, 0, 300.239, -173.627, 0, 0, 0, 0, 265.239, -150.627, 0, 0, 0, 0, 147.239, -47.6267, 0, 0, 0, 0, 144.239, -34.6267, 0, 0, 0, 0, 170.239, -3.62671, 0, 0, 0, 0, 161.239, 17.3733, 0, 0, 0, 0, 109.239, 52.3733, 0, 0, 0, 0, 68.2394, 60.3733, 0, 0, 0, 0, 10.2394, 17.3733)
+}
+point_count = 53
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_4tpuv")
+target_score = 25
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+texture = ExtResource("2_imdmq")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="TimeLabel" type="Label" parent="."]
+visible = false
+offset_left = 400.0
+offset_top = 816.0
+offset_right = 1008.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 102
+text = "1.213"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = 384.0
+offset_top = 192.0
+offset_right = 1024.0
+offset_bottom = 768.0
+theme_override_font_sizes/font_size = 384
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 1600.0
+offset_bottom = 192.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PositionManager" parent="." instance=ExtResource("2_kiihf")]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 736.0
+global_position_offset = Vector2(96, 48)
+
+[node name="RacePaths" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="RacePaths"]
+position = Vector2(1344.76, 908.627)
+curve = SubResource("Curve2D_imdmq")
+
+[node name="RaceFollower" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(1, 0.501961, 0, 1)
+driver_name = "PIA"
+
+[node name="RaceFollower2" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(1, 0.501961, 0, 1)
+driver_name = "NOR"
+
+[node name="RaceFollower3" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.211765, 0.443137, 0.776471, 1)
+driver_name = "VER"
+
+[node name="RaceFollower4" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.152941, 0.956863, 0.823529, 1)
+driver_name = "RUS"
+
+[node name="RaceFollower5" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.909804, 0, 0.12549, 1)
+driver_name = "LEC"
+
+[node name="RaceFollower6" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.909804, 0, 0.12549, 1)
+driver_name = "HAM"
+
+[node name="RaceFollower7" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.152941, 0.956863, 0.823529, 1)
+driver_name = "ANT"
+
+[node name="RaceFollower8" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.392157, 0.768627, 1, 1)
+driver_name = "ALB"
+
+[node name="RaceFollower9" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.321569, 0.886275, 0.321569, 1)
+driver_name = "HUL"
+
+[node name="RaceFollower10" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.713726, 0.729412, 0.741176, 1)
+driver_name = "OCO"
+
+[node name="RaceFollower11" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.133333, 0.6, 0.443137, 1)
+driver_name = "ALO"
+
+[node name="RaceFollower12" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.133333, 0.6, 0.443137, 1)
+driver_name = "STR"
+
+[node name="RaceFollower13" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.4, 0.572549, 1, 1)
+driver_name = "HAD"
+
+[node name="RaceFollower14" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0, 0.576471, 0.8, 1)
+driver_name = "GAS"
+
+[node name="RaceFollower15" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.4, 0.572549, 1, 1)
+driver_name = "LAW"
+
+[node name="RaceFollower16" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.392157, 0.768627, 1, 1)
+driver_name = "SAI"
+
+[node name="RaceFollower17" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.321569, 0.886275, 0.321569, 1)
+driver_name = "BOR"
+
+[node name="RaceFollower18" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.211765, 0.443137, 0.776471, 1)
+driver_name = "TSU"
+
+[node name="RaceFollower19" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0.713726, 0.729412, 0.741176, 1)
+driver_name = "BEA"
+
+[node name="RaceFollower20" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
+position = Vector2(10.2394, 17.3733)
+color = Color(0, 0.576471, 0.8, 1)
+driver_name = "COL"

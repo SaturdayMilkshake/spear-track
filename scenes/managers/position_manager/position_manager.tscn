@@ -1,0 +1,240 @@
+[gd_scene load_steps=14 format=3 uid="uid://bobmchlly08fc"]
+
+[ext_resource type="Script" uid="uid://b5p6rr6mv3tao" path="res://scenes/managers/position_manager/position_manager.gd" id="1_kl7vh"]
+[ext_resource type="PackedScene" uid="uid://d323il54j7p2v" path="res://scenes/managers/position_manager/position_item.tscn" id="2_fh3pa"]
+[ext_resource type="PackedScene" uid="uid://bx0xttxvrjo2s" path="res://scenes/managers/position_manager/position_count.tscn" id="3_fh3pa"]
+[ext_resource type="Texture2D" uid="uid://bkf35pmw8wc0w" path="res://assets/logos/2025mclarenlogowhite.png" id="3_ryrki"]
+[ext_resource type="Texture2D" uid="uid://b7gl8us16fupv" path="res://assets/logos/2025redbullracinglogowhite.png" id="4_spn78"]
+[ext_resource type="Texture2D" uid="uid://7ngme7mgrnqd" path="res://assets/logos/2025mercedeslogowhite.png" id="5_jyeor"]
+[ext_resource type="Texture2D" uid="uid://csq7t6nfn0wl5" path="res://assets/logos/2025ferrarilogolight.png" id="6_qlxpi"]
+[ext_resource type="Texture2D" uid="uid://cbsclcn4hkkh2" path="res://assets/logos/2025williamslogowhite.png" id="7_8qtrc"]
+[ext_resource type="Texture2D" uid="uid://bh21o1ulhi58w" path="res://assets/logos/2025kicksauberlogowhite.png" id="8_hoyh0"]
+[ext_resource type="Texture2D" uid="uid://c0mfqu8saahy7" path="res://assets/logos/2025haaslogowhite.png" id="9_ecw1l"]
+[ext_resource type="Texture2D" uid="uid://bcxtupeh6kfa" path="res://assets/logos/2025astonmartinlogowhite.png" id="10_0qsjd"]
+[ext_resource type="Texture2D" uid="uid://duddsya1yl8ji" path="res://assets/logos/2025racingbullslogowhite.png" id="11_yvmx1"]
+[ext_resource type="Texture2D" uid="uid://l6fr1bg215vi" path="res://assets/logos/2025alpinelogowhite.png" id="12_xoa7t"]
+
+[node name="PositionManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 704.0
+script = ExtResource("1_kl7vh")
+global_position_offset = Vector2(32, 16)
+
+[node name="TopBackground" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 64.0
+color = Color(0.0992318, 0.0992318, 0.0992318, 1)
+
+[node name="PositionContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 704.0
+theme_override_constants/separation = 0
+
+[node name="PositionItem" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("3_ryrki")
+item_name = "PIA"
+current_spot = 10
+
+[node name="PositionItem2" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("3_ryrki")
+item_name = "NOR"
+current_spot = 9
+
+[node name="PositionItem3" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("4_spn78")
+item_name = "VER"
+current_spot = 8
+
+[node name="PositionItem4" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("5_jyeor")
+item_name = "RUS"
+current_spot = 7
+
+[node name="PositionItem5" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("6_qlxpi")
+item_name = "LEC"
+current_spot = 6
+
+[node name="PositionItem6" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("6_qlxpi")
+item_name = "HAM"
+current_spot = 5
+
+[node name="PositionItem7" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("5_jyeor")
+item_name = "ANT"
+current_spot = 4
+
+[node name="PositionItem8" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("7_8qtrc")
+item_name = "ALB"
+current_spot = 3
+
+[node name="PositionItem9" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("8_hoyh0")
+item_name = "HUL"
+current_spot = 2
+
+[node name="PositionItem10" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("9_ecw1l")
+item_name = "OCO"
+current_spot = 1
+
+[node name="PositionItem11" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("10_0qsjd")
+item_name = "ALO"
+
+[node name="PositionItem12" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("10_0qsjd")
+item_name = "STR"
+
+[node name="PositionItem13" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("11_yvmx1")
+item_name = "HAD"
+
+[node name="PositionItem14" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("12_xoa7t")
+item_name = "GAS"
+
+[node name="PositionItem15" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("11_yvmx1")
+item_name = "LAW"
+
+[node name="PositionItem16" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("7_8qtrc")
+item_name = "SAI"
+
+[node name="PositionItem17" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("8_hoyh0")
+item_name = "BOR"
+
+[node name="PositionItem18" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("4_spn78")
+item_name = "TSU"
+
+[node name="PositionItem19" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("9_ecw1l")
+item_name = "BEA"
+
+[node name="PositionItem20" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+layout_mode = 2
+icon_texture = ExtResource("12_xoa7t")
+item_name = "COL"
+
+[node name="PositonCountContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 32.0
+offset_bottom = 704.0
+theme_override_constants/separation = 0
+
+[node name="PositionCount" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 1
+box_color = Color(0.768627, 0, 0, 1)
+
+[node name="PositionCount2" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 2
+
+[node name="PositionCount3" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 3
+
+[node name="PositionCount4" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 4
+
+[node name="PositionCount5" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 5
+
+[node name="PositionCount6" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 6
+
+[node name="PositionCount7" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 7
+
+[node name="PositionCount8" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 8
+
+[node name="PositionCount9" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 9
+
+[node name="PositionCount10" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 10
+
+[node name="PositionCount11" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 11
+
+[node name="PositionCount12" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 12
+
+[node name="PositionCount13" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 13
+
+[node name="PositionCount14" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 14
+
+[node name="PositionCount15" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 15
+
+[node name="PositionCount16" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 16
+
+[node name="PositionCount17" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 17
+
+[node name="PositionCount18" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 18
+
+[node name="PositionCount19" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 19
+
+[node name="PositionCount20" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
+layout_mode = 2
+position_count = 20
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

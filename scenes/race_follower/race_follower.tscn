@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://boqp1w60axej0"]
+
+[ext_resource type="Script" uid="uid://dw3aof46jctp2" path="res://scenes/race_follower/race_follower.gd" id="1_jh1rn"]
+[ext_resource type="Texture2D" uid="uid://bichwee1hfa42" path="res://assets/bullet.png" id="2_rqfyr"]
+[ext_resource type="FontFile" uid="uid://ceqmadtq67mjr" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Regular_web_0.ttf" id="3_q3plf"]
+
+[node name="RaceFollower" type="PathFollow2D"]
+rotates = false
+script = ExtResource("1_jh1rn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rqfyr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q3plf")
+horizontal_alignment = 1
+vertical_alignment = 1

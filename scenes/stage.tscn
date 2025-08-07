@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcgvt8wsj62si"]
+
+[ext_resource type="PackedScene" uid="uid://5ic4fy1ysjc3" path="res://scenes/managers/game_manager/game_manager.tscn" id="1_8rem4"]
+
+[node name="Stage" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_8rem4")]
