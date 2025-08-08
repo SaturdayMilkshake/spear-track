@@ -40,111 +40,120 @@ theme_override_constants/separation = 0
 layout_mode = 2
 icon_texture = ExtResource("3_ryrki")
 item_name = "PIA"
-current_spot = 10
 
 [node name="PositionItem2" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("3_ryrki")
 item_name = "NOR"
-current_spot = 9
+inital_score = -5
 
 [node name="PositionItem3" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("4_spn78")
 item_name = "VER"
-current_spot = 8
+inital_score = -10
 
 [node name="PositionItem4" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("5_jyeor")
 item_name = "RUS"
-current_spot = 7
+inital_score = -15
 
 [node name="PositionItem5" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("6_qlxpi")
 item_name = "LEC"
-current_spot = 6
+inital_score = -20
 
 [node name="PositionItem6" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("6_qlxpi")
 item_name = "HAM"
-current_spot = 5
+inital_score = -25
 
 [node name="PositionItem7" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("5_jyeor")
 item_name = "ANT"
-current_spot = 4
+inital_score = -30
 
 [node name="PositionItem8" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("7_8qtrc")
 item_name = "ALB"
-current_spot = 3
+inital_score = -35
 
 [node name="PositionItem9" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("8_hoyh0")
 item_name = "HUL"
-current_spot = 2
+inital_score = -40
 
 [node name="PositionItem10" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("9_ecw1l")
 item_name = "OCO"
-current_spot = 1
+inital_score = -45
 
 [node name="PositionItem11" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("10_0qsjd")
 item_name = "ALO"
+inital_score = -50
 
 [node name="PositionItem12" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("10_0qsjd")
 item_name = "STR"
+inital_score = -55
 
 [node name="PositionItem13" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("11_yvmx1")
 item_name = "HAD"
+inital_score = -60
 
 [node name="PositionItem14" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("12_xoa7t")
 item_name = "GAS"
+inital_score = -65
 
 [node name="PositionItem15" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("11_yvmx1")
 item_name = "LAW"
+inital_score = -70
 
 [node name="PositionItem16" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("7_8qtrc")
 item_name = "SAI"
+inital_score = -75
 
 [node name="PositionItem17" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("8_hoyh0")
 item_name = "BOR"
+inital_score = -80
 
 [node name="PositionItem18" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("4_spn78")
 item_name = "TSU"
+inital_score = -85
 
 [node name="PositionItem19" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("9_ecw1l")
 item_name = "BEA"
+inital_score = -90
 
 [node name="PositionItem20" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
 icon_texture = ExtResource("12_xoa7t")
 item_name = "COL"
+inital_score = -95
 
 [node name="PositonCountContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

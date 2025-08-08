@@ -14,6 +14,8 @@ func update_positions() -> void:
 		var tween = create_tween()
 		tween.tween_property(position_item, "global_position", Vector2(global_position_offset.x, global_position_offset.y + 48 * (index + 1)), 0.2)
 		index += 1
+		
+	SignalHandler.emit_signal("send_leading_lap", position_items[0].current_lap)
 			
 func _on_timer_timeout() -> void:
 	update_positions()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://5ic4fy1ysjc3"]
+[gd_scene load_steps=8 format=3 uid="uid://5ic4fy1ysjc3"]
 
 [ext_resource type="Script" uid="uid://rxvincyldhdr" path="res://scenes/managers/game_manager/game_manager.gd" id="1_4tpuv"]
 [ext_resource type="Texture2D" uid="uid://w65elqybc0ae" path="res://assets/Silverstone_Circuit_vector_map.png" id="2_imdmq"]
 [ext_resource type="PackedScene" uid="uid://bobmchlly08fc" path="res://scenes/managers/position_manager/position_manager.tscn" id="2_kiihf"]
 [ext_resource type="PackedScene" uid="uid://boqp1w60axej0" path="res://scenes/race_follower/race_follower.tscn" id="4_6fqxo"]
+[ext_resource type="FontFile" uid="uid://cn6nwaf08m6rf" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Bold_web_0.ttf" id="5_8anos"]
+[ext_resource type="FontFile" uid="uid://ceqmadtq67mjr" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Regular_web_0.ttf" id="6_cbtqs"]
 
 [sub_resource type="Curve2D" id="Curve2D_imdmq"]
 _data = {
@@ -13,7 +15,6 @@ point_count = 53
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_4tpuv")
-target_score = 25
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 448.0
@@ -168,3 +169,71 @@ driver_name = "BEA"
 position = Vector2(10.2394, 17.3733)
 color = Color(0, 0.576471, 0.8, 1)
 driver_name = "COL"
+
+[node name="FastestLap" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 704.0
+offset_top = 64.0
+offset_right = 1536.0
+offset_bottom = 128.0
+
+[node name="Background" type="ColorRect" parent="FastestLap"]
+layout_mode = 0
+offset_right = 832.0
+offset_bottom = 64.0
+color = Color(0.206554, 0.206554, 0.206554, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="FastestLap"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 64.0
+color = Color(1, 0, 1, 1)
+
+[node name="FastestLap" type="Label" parent="FastestLap"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("5_8anos")
+text = "FASTEST LAP"
+vertical_alignment = 1
+
+[node name="DriverName" type="Label" parent="FastestLap"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 608.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("5_8anos")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LapTime" type="Label" parent="FastestLap"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 8.0
+offset_right = 824.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("6_cbtqs")
+theme_override_font_sizes/font_size = 28
+vertical_alignment = 1
+
+[node name="LapCounter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LapLabel" type="Label" parent="LapCounter"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("5_8anos")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
