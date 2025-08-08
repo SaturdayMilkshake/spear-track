@@ -3,6 +3,8 @@ extends Node
 @export var target_score: int = 100
 @export var max_laps: int = 3
 
+@onready var position_manager: Node = $PositionManager
+
 @onready var time_label: Node = $TimeLabel
 @onready var score_label: Node = $ScoreLabel
 
@@ -11,6 +13,8 @@ extends Node
 @onready var fastest_lap_time: Node = $FastestLap/LapTime
 
 @onready var lap_label: Node = $LapCounter/LapLabel
+
+@onready var timer: Node = $Timer
 
 var score: int = 0
 var current_game_seconds: float = 0.0
@@ -51,6 +55,7 @@ func _ready() -> void:
 		
 func start_game() -> void:
 	game_active = true
+	position_manager.set_item_max_laps(max_laps)
 	update_lap_counter(current_lap)
 	
 func end_game() -> void:
@@ -70,9 +75,17 @@ func send_lap_time(driver_name: String, time: float) -> void:
 		fastest_lap = time
 
 func update_lap_counter(lap: int) -> void:
-	lap_label.text = "LAP %d / %d" % [lap, max_laps] 
+	if lap == max_laps && lap != 1:
+		lap_label.text = "FINAL LAP"
+	else:
+		lap_label.text = "LAP %d / %d" % [lap, max_laps] 
 
 func send_leading_lap(lap_number: int) -> void:
-	if lap_number > current_lap:
+	if lap_number > max_laps:
+		pass
+	elif lap_number > current_lap:
 		current_lap = lap_number
 		update_lap_counter(current_lap)
+
+func _on_timer_timeout() -> void:
+	start_game()
