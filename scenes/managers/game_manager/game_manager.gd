@@ -67,12 +67,14 @@ func restart_game() -> void:
 func send_lap_time(driver_name: String, time: float) -> void:
 	if fastest_lap <= 0.0:
 		fastest_lap_driver.text = driver_names[driver_name]
-		fastest_lap_time.text = "%10.3f" % snapped(time, 0.001)
+		fastest_lap_time.text = "%10.3f" % [snapped(fmod(time, 60.0), 0.001)]
 		fastest_lap = time
+		get_tree().call_group("position_item", "set_fastest_lap_anim", driver_name)
 	elif time < fastest_lap:
 		fastest_lap_driver.text = driver_names[driver_name]
-		fastest_lap_time.text = "%10.3f" % snapped(time, 0.001)
+		fastest_lap_time.text = "%10.3f" % [snapped(fmod(time, 60.0), 0.001)]
 		fastest_lap = time
+		get_tree().call_group("position_item", "set_fastest_lap_anim", driver_name)
 
 func update_lap_counter(lap: int) -> void:
 	if lap == max_laps && lap != 1:

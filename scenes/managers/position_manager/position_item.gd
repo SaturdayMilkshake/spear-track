@@ -7,7 +7,10 @@ extends Control
 @onready var icon: Node = $Icon
 @onready var position_name: Node = $PositionName
 @onready var finish_rect: Node = $FinishRect
+@onready var fastest_lap_rect: Node = $FastestLapRect
 @onready var lap_time_offset: Node = $LapTimeOffset
+
+@onready var animation_player: Node = $AnimationPlayer
 
 var success_probability: int = 100
 
@@ -22,6 +25,7 @@ var final_lap_time: float = 0.0
 var processing_active: bool = false
 var unsortable: bool = false
 var final_lap_time_set: bool = false
+var current_fastest_lap: bool = false
 
 func _ready() -> void:
 	current_lap = 1
@@ -45,6 +49,7 @@ func _physics_process(delta: float) -> void:
 					if !final_lap_time_set:
 						final_lap_time = total_lap_time
 						final_lap_time_set = true
+						animation_player.play("ShowFinish")
 				else:
 					current_lap += 1
 					lap_time = 0.0
@@ -67,7 +72,16 @@ func reroll_success_probability() -> void:
 	success_probability = randi_range(10, 15)
 
 func update_trailing_seconds(seconds: float) -> void:
-	lap_time_offset.text = "+%1.3f" % seconds
+	lap_time_offset.text = "+%1.3f" % (seconds + randf_range(0.0, 0.1))
 
 func set_leader_text(text: String) -> void:
 	lap_time_offset.text = text
+
+func set_fastest_lap_anim(driver_name: String) -> void:
+	if driver_name == item_name:
+		current_fastest_lap = true
+		animation_player.play("ShowFastestLap")
+	else:
+		if current_fastest_lap:
+			current_fastest_lap = false
+			animation_player.play("HideFastestLap")

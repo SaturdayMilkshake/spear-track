@@ -22,7 +22,7 @@ func update_positions() -> void:
 		tween.tween_property(position_item, "global_position", Vector2(global_position_offset.x, global_position_offset.y + 48 * (index + 1)), 0.5)
 		if index < position_items.size() - 1:
 			var compared_item: Node = position_items[index + 1]
-			if compared_item:
+			if !compared_item.unsortable:
 				compared_item.update_trailing_seconds((position_item.current_score - compared_item.current_score) * set_delta)
 		index += 1
 		

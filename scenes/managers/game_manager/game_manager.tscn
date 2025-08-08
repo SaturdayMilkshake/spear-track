@@ -15,7 +15,6 @@ point_count = 53
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_4tpuv")
-max_laps = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 448.0
