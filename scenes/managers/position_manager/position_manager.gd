@@ -3,11 +3,9 @@ extends Control
 @export var global_position_offset: Vector2 = Vector2.ZERO
 
 @onready var position_container: Node = $PositionContainer
+@onready var timer: Node = $Timer
 
-var set_delta: float = 0.0
-
-func _physics_process(delta: float) -> void:
-	set_delta = delta
+var set_delta: float = 1.0 / 60.0
 
 func update_positions() -> void:
 	var position_items: Array = position_container.get_children()
@@ -23,7 +21,12 @@ func update_positions() -> void:
 		if index < position_items.size() - 1:
 			var compared_item: Node = position_items[index + 1]
 			if !compared_item.unsortable:
-				compared_item.update_trailing_seconds((position_item.current_score - compared_item.current_score) * set_delta)
+				if position_item.unsortable:
+					compared_item.update_trailing_seconds(compared_item.total_lap_time - position_item.final_lap_time)
+				else:
+					compared_item.update_trailing_seconds((position_item.current_score - compared_item.current_score) * set_delta + randf_range(0.0, 0.01))
+			else:
+				compared_item.update_trailing_seconds((compared_item.final_lap_time - position_item.final_lap_time))
 		index += 1
 		
 	SignalHandler.emit_signal("send_leading_lap", position_items[0].current_lap)
@@ -49,3 +52,8 @@ func set_item_max_laps(laps: int) -> void:
 	var position_items: Array = position_container.get_children()
 	for position_item: Node in position_items:
 		position_item.max_laps = laps
+
+func set_item_processing_status(status: bool) -> void:
+	var position_items: Array = position_container.get_children()
+	for position_item: Node in position_items:
+		position_item.processing_active = status

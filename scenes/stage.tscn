@@ -5,4 +5,4 @@
 [node name="Stage" type="Node2D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_8rem4")]
-max_laps = 17
+max_laps = 52

@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://5ic4fy1ysjc3"]
+[gd_scene load_steps=17 format=3 uid="uid://5ic4fy1ysjc3"]
 
 [ext_resource type="Script" uid="uid://rxvincyldhdr" path="res://scenes/managers/game_manager/game_manager.gd" id="1_4tpuv"]
-[ext_resource type="Texture2D" uid="uid://w65elqybc0ae" path="res://assets/Silverstone_Circuit_vector_map.png" id="2_imdmq"]
+[ext_resource type="Texture2D" uid="uid://b8842pdt871w4" path="res://assets/animo_circuit.png" id="2_c0tgo"]
 [ext_resource type="PackedScene" uid="uid://bobmchlly08fc" path="res://scenes/managers/position_manager/position_manager.tscn" id="2_kiihf"]
 [ext_resource type="PackedScene" uid="uid://boqp1w60axej0" path="res://scenes/race_follower/race_follower.tscn" id="4_6fqxo"]
 [ext_resource type="FontFile" uid="uid://cn6nwaf08m6rf" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Bold_web_0.ttf" id="5_8anos"]
 [ext_resource type="FontFile" uid="uid://ceqmadtq67mjr" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Regular_web_0.ttf" id="6_cbtqs"]
+[ext_resource type="Texture2D" uid="uid://bichwee1hfa42" path="res://assets/bullet.png" id="7_c0tgo"]
 
 [sub_resource type="Curve2D" id="Curve2D_imdmq"]
 _data = {
@@ -13,18 +14,135 @@ _data = {
 }
 point_count = 53
 
-[node name="GameManager" type="Node"]
+[sub_resource type="Curve2D" id="Curve2D_c0tgo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 903, 930, 0, 0, 0, 0, 717, 959, 6.64758, 5.53965, -6.64758, -5.53965, 668, 953, 2.53241, 9.97137, -2.53241, -9.97137, 634, 914, 0, 0, 0, 0, 638, 889, -5.2231, -0.949654, 5.2231, 0.949654, 664, 871, 0, 0, 0, 0, 764, 868, -2.37414, 8.86344, 2.37414, -8.86344, 787, 850, 0, 0, 0, 0, 800, 827, -11.0793, 2.05758, 11.0793, -2.05758, 821, 818, -11.3958, -0.791378, 11.3958, 0.791378, 888, 832, 0, 0, 0, 0, 914, 823, -12.1872, 14.8779, 12.1872, -14.8779, 943, 782, 0, 0, 0, 0, 984, 768, 0, 0, 0, 0, 1006, 776, -4.90655, -8.38861, 4.90655, 8.38861, 1038, 817, -21.2089, -2.21586, 21.2089, 2.21586, 1066, 829, -11.7124, 1.58276, 11.7124, -1.58276, 1094, 823, -6.80585, 10.4462, 6.80585, -10.4462, 1151, 769, 2.21586, 5.06482, -2.21586, -5.06482, 1163, 703, 0, 0, 0, 0, 1160, 682, 0, 0, 0, 0, 1126, 589, 0, 0, 0, 0, 1163, 508, 0, 0, 0, 0, 1173, 505, -4.11517, -4.27344, 4.11517, 4.27344, 1338, 561, -0.949654, -0.949654, 0.949654, 0.949654, 1380, 616, 0, 0, 0, 0, 1398, 619, 0, 0, 0, 0, 1403, 606, 0, 0, 0, 0, 1360, 526, -3.37064, 9.69059, 3.37064, -9.69059, 1354, 480, -3.79197, 0.84266, 3.79197, -0.84266, 1367, 439, -10.5037, 9.49654, 10.5037, -9.49654, 1401, 397, -10.4462, 2.26334, 10.4462, -2.26334, 1459, 350, -16.5398, 1.21872, 16.5398, -1.21872, 1527, 336, -23.3298, 3.83027, 23.3298, -3.83027, 1627, 349, -7.13823, 10.9685, 7.13823, -10.9685, 1659, 325, -1.74103, -2.43745, 1.74103, 2.43745, 1672, 280, 7.48644, 1.04462, -7.48644, -1.04462, 1655, 253, 9.40158, -1.91514, -9.40158, 1.91514, 1625, 247, 0, 0, 0, 0, 1557, 272, 0, 0, 0, 0, 1475, 313, 0, 0, 0, 0, 1437, 340, 0, 0, 0, 0, 1420, 352, 3.83027, -2.26334, -3.83027, 2.26334, 1196, 542, -1.04462, -21.5888, 1.04462, 21.5888, 1182, 609, 0, 0, 0, 0, 1193, 674, -1.21872, -5.91951, 1.21872, 5.91951, 1212, 747, 0, 0, 0, 0, 1209, 777, 5.2231, -5.2231, -5.2231, 5.2231, 1184, 785, -2.08924, -2.08924, 2.08924, 2.08924, 1184, 807, 0, 0, 0, 0, 1179, 849, 0, 0, 0, 0, 1158, 876, 9.74978, -3.48206, -9.74978, 3.48206, 1119, 895, 0, 0, 0, 0, 1058, 909, 0, 0, 0, 0, 903, 930)
+}
+point_count = 55
+
+[sub_resource type="Curve2D" id="Curve2D_hc1tk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 725, 638, 0.631995, -3.5813, -0.631995, 3.5813, 757, 554, 0, 0, 0, 0, 774, 526, 0, 0, 0, 0, 818, 471, 0, 0, 0, 0, 827, 450, -0.982767, -3.14486, 0.982767, 3.14486, 839, 445, 0, 0, 0, 0, 863, 458, 0, 0, 0, 0, 982, 482, 0, 0, 0, 0, 1052, 492, -10.7261, -4.57822, 10.7261, 4.57822, 1120, 515, -11.6418, -4.31661, 11.6418, 4.31661, 1227, 521, -13.9963, -7.45596, 13.9963, 7.45596, 1299, 540, -17.3972, 3.53177, 17.3972, -3.53177, 1363, 538, 0, 0, 0, 0, 1402, 516, 0.915644, 15.8276, -0.915644, -15.8276, 1413, 475, 0, 0, 0, 0, 1411, 457, 0, 0, 0, 0, 1397, 412, -5.36306, 7.19435, 5.36306, -7.19435, 1402, 375, 0, 0, 0, 0, 1418, 357, 0, 0, 0, 0, 1430, 348, 0, 0, 0, 0, 1566, 276, 0, 0, 0, 0, 1592, 265, 0, 0, 0, 0, 1604, 271, 0, 0, 0, 0, 1612, 290, 0, 0, 0, 0, 1608, 304, 0, 0, 0, 0, 1603, 316, 0, 0, 0, 0, 1601, 328, 0, 0, 0, 0, 1605, 373, 0, 0, 0, 0, 1606, 388, -11.839, 1.56693, 11.839, -1.56693, 1616, 395, 0, 0, 0, 0, 1627, 385, 0, 0, 0, 0, 1623, 369, 0, 0, 0, 0, 1616, 330, 0, 0, 0, 0, 1617, 318, 0, 0, 0, 0, 1625, 306, -17.4277, 4.97935, 17.4277, -4.97935, 1637, 305, 0, 0, 0, 0, 1702, 323, 0, 0, 0, 0, 1708, 338, 0, 0, 0, 0, 1699, 355, 0, 0, 0, 0, 1678, 389, 0, 0, 0, 0, 1592, 505, 32.118, -19.1178, -32.118, 19.1178, 1529, 554, 0, 0, 0, 0, 1437, 587, 0, 0, 0, 0, 1347, 593, 12.4903, 4.07847, -12.4903, -4.07847, 1268, 590, 15.5492, 9.94128, -15.5492, -9.94128, 1163, 564, 9.51319, -4.28093, -9.51319, 4.28093, 1152, 570, 13.4374, -5.589, -13.4374, 5.589, 1143, 581, 0, 0, 0, 0, 1122, 574, 0, 0, 0, 0, 1113, 567, 0, 0, 0, 0, 1104, 560, 0, 0, 0, 0, 888, 494, 0, 0, 0, 0, 874, 494, 0, 0, 0, 0, 861, 502, 0, 0, 0, 0, 839, 524, 0, 0, 0, 0, 814, 555, 0, 0, 0, 0, 794, 596, 0, 0, 0, 0, 792, 621, 0, 0, 0, 0, 806, 653, 0, 0, 0, 0, 804, 666, 0, 0, 0, 0, 778, 761, 0, 0, 0, 0, 769, 788, 0, 0, 0, 0, 743, 793, 0, 0, 0, 0, 731, 828, 0, 0, 0, 0, 733, 879, 0, 0, 0, 0, 752, 936, 0, 0, 0, 0, 769, 954, 0, 0, 0, 0, 773, 963, 0, 0, 0, 0, 773, 981, 0, 0, 0, 0, 763, 987, 0, 0, 0, 0, 717, 978, 0, 0, 0, 0, 694, 974, 3.25573, 11.2993, -3.25573, -11.2993, 684, 965, 0, 0, 0, 0, 689, 931, 0, 0, 0, 0, 678, 885, 0, 0, 0, 0, 681, 826, 0, 0, 0, 0, 687, 765, 0, 0, 0, 0, 693, 730, 0, 0, 0, 0, 725, 638)
+}
+point_count = 79
+
+[sub_resource type="Curve2D" id="Curve2D_puwx2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 860, 523, 0, 0, 0, 0, 968, 264, -20.0219, -14.9729, 20.0219, 14.9729, 1012, 248, 6.09361, -25.245, -6.09361, 25.245, 1033, 286, 0, 0, 0, 0, 1029, 301, -4.00965, -8.32773, 4.00965, 8.32773, 985, 420, 0.308435, -28.9928, -0.308435, 28.9928, 981, 444, 0, 0, 0, 0, 981, 492, 10.1783, -5.24339, -10.1783, 5.24339, 967, 520, 0, 0, 0, 0, 896, 552, -12.6458, -26.8338, 12.6458, 26.8338, 881, 592, 0, 0, 0, 0, 916, 609, 0, 0, 0, 0, 1013, 578, 0, 0, 0, 0, 1102, 577, 0, 0, 0, 0, 1187, 596, -11.5866, 2.78078, 11.5866, -2.78078, 1235, 595, -29.6616, 18.7702, 29.6616, -18.7702, 1269, 578, -7.64714, 4.17117, 7.64714, -4.17117, 1338, 540, 0, 0, 0, 0, 1394, 529, 0, 0, 0, 0, 1511, 534, -1.85385, -0.231731, 1.85385, 0.231731, 1549, 543, -3.47597, -9.03753, 3.47597, 9.03753, 1582, 568, 1.85385, -8.80579, -1.85385, 8.80579, 1593, 623, 0, 0, 0, 0, 1586, 653, 0, 0, 0, 0, 1548, 706, 0, 0, 0, 0, 1515, 767, 8.57406, -7.41541, -8.57406, 7.41541, 1478, 836, 0, 0, 0, 0, 1454, 848, 17.3799, 5.56155, -17.3799, -5.56155, 1374, 835, 14.1356, 17.8433, -14.1356, -17.8433, 1312, 798, 0, 0, 0, 0, 1300, 772, 0, 0, 0, 0, 1302, 757, -11.5866, 0, 11.5866, 0, 1344, 730, 0, 0, 0, 0, 1413, 718, -11.5866, 10.4279, 11.5866, -10.4279, 1462, 695, 0, 0, 0, 0, 1477, 667, 0, 0, 0, 0, 1472, 642, 0, 0, 0, 0, 1453, 628, 0, 0, 0, 0, 1377, 618, 0, 0, 0, 0, 1280, 619, 15.526, -1.85385, -15.526, 1.85385, 1255, 623, 0, 0, 0, 0, 1177, 641, 0, 0, 0, 0, 1073, 676, 0, 0, 0, 0, 1027, 698, 0, 0, 0, 0, 1002, 707, 2.78078, 5.56155, -2.78078, -5.56155, 991, 703, 0, 0, 0, 0, 972, 680, 12.5135, -5.56155, -12.5135, 5.56155, 949, 674, 0, 0, 0, 0, 929, 687, -3.7077, -13.6722, 3.7077, 13.6722, 924, 711, 0, 0, 0, 0, 937, 794, 0, 0, 0, 0, 960, 926, 0, 0, 0, 0, 955, 954, 0, 0, 0, 0, 934, 970, 11.1078, 0.957568, -11.1078, -0.957568, 884, 980, 0, 0, 0, 0, 819, 977, 10.3226, 6.95194, -10.3226, -6.95194, 776, 960, 16.4319, 14.3252, -16.4319, -14.3252, 769, 953, 0, 0, 0, 0, 734, 896, -1.14908, 15.8956, 1.14908, -15.8956, 730, 844, 0, 0, 0, 0, 768, 750, 0, 0, 0, 0, 860, 523)
+}
+point_count = 62
+
+[sub_resource type="Curve2D" id="Curve2D_ei6lu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1368, 881, 0, 0, 0, 0, 1161, 941, 0, 0, 0, 0, 1143, 858, 0, 0, 0, 0, 1055, 777, 0, 0, 0, 0, 1038, 777, 0, 0, 0, 0, 1022, 765, 0, 0, 0, 0, 968, 691, 0, 0, 0, 0, 947, 594, 0, 0, 0, 0, 925, 584, 0, 0, 0, 0, 899, 591, 0, 0, 0, 0, 881, 585, 0, 0, 0, 0, 755, 394, 0, 0, 0, 0, 692, 353, 0, 0, 0, 0, 643, 270, 0, 0, 0, 0, 642, 251, 0, 0, 0, 0, 677, 228, 0, 0, 0, 0, 699, 225, 0, 0, 0, 0, 736, 209, 0, 0, 0, 0, 778, 230, 0, 0, 0, 0, 829, 274, 0, 0, 0, 0, 981, 503, 0, 0, 0, 0, 989, 522, 0, 0, 0, 0, 994, 565, 0, 0, 0, 0, 1097, 648, 0, 0, 0, 0, 1126, 677, 0, 0, 0, 0, 1151, 746, 0, 0, 0, 0, 1198, 790, 0, 0, 0, 0, 1277, 703, 0, 0, 0, 0, 1293, 695, 0, 0, 0, 0, 1307, 700, 0, 0, 0, 0, 1356, 736, 0, 0, 0, 0, 1376, 747, 0, 0, 0, 0, 1566, 703, 0, 0, 0, 0, 1599, 806, 0, 0, 0, 0, 1611, 814, 0, 0, 0, 0, 1607, 829, 0, 0, 0, 0, 1587, 823, 0, 0, 0, 0, 1578, 825, 0, 0, 0, 0, 1368, 881)
+}
+point_count = 39
+
+[sub_resource type="Curve2D" id="Curve2D_56m4r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1610, 818, 0, 0, 0, 0, 1616, 832, 0, 0, 0, 0, 1609, 852, 0, 0, 0, 0, 1489, 884, 0, 0, 0, 0, 1362, 906, 0, 0, 0, 0, 1235, 919)
+}
+point_count = 6
+
+[sub_resource type="Animation" id="Animation_c0tgo"]
+resource_name = "ShowFastestLap"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FastestLap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FastestLap/ColorRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(0.277392, 1, 0.420448, 0.203063),
+"update": 0,
+"values": [Vector2(16, 0), Vector2(16, 64), Vector2(16, 64), Vector2(16, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FastestLap/Background:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(0.297302, 1, 0.31864, 0.297302),
+"update": 0,
+"values": [Vector2(0, 64), Vector2(832, 64), Vector2(832, 64), Vector2(0, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_hc1tk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FastestLap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FastestLap/ColorRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FastestLap/Background:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hc1tk"]
+_data = {
+&"RESET": SubResource("Animation_hc1tk"),
+&"ShowFastestLap": SubResource("Animation_c0tgo")
+}
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("current_track_path", "current_pit_path")]
 script = ExtResource("1_4tpuv")
+max_laps = 5
+current_track_path = NodePath("RacePaths/Animo/Animo")
+current_pit_path = NodePath("RacePaths/Animo/AnimoPit")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 448.0
-offset_top = 192.0
-offset_right = 1856.0
-offset_bottom = 1016.0
-texture = ExtResource("2_imdmq")
-expand_mode = 1
+offset_left = 408.0
+offset_right = 1840.0
+offset_bottom = 1080.0
+texture = ExtResource("2_c0tgo")
+expand_mode = 2
 stretch_mode = 5
-metadata/_edit_lock_ = true
 
 [node name="TimeLabel" type="Label" parent="."]
 visible = false
@@ -56,6 +174,9 @@ offset_right = 1600.0
 offset_bottom = 192.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="PositionManager" parent="." instance=ExtResource("2_kiihf")]
 offset_left = 64.0
@@ -66,111 +187,133 @@ global_position_offset = Vector2(96, 48)
 
 [node name="RacePaths" type="Node" parent="."]
 
-[node name="Path2D" type="Path2D" parent="RacePaths"]
+[node name="Silverstone" type="Path2D" parent="RacePaths"]
+visible = false
 position = Vector2(1344.76, 908.627)
 curve = SubResource("Curve2D_imdmq")
 
-[node name="RaceFollower" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="Suzuka" type="Path2D" parent="RacePaths"]
+visible = false
+curve = SubResource("Curve2D_c0tgo")
+
+[node name="Monaco" type="Path2D" parent="RacePaths"]
+visible = false
+curve = SubResource("Curve2D_hc1tk")
+
+[node name="Zandvoort" type="Path2D" parent="RacePaths"]
+visible = false
+curve = SubResource("Curve2D_puwx2")
+
+[node name="Animo" type="Node2D" parent="RacePaths"]
+
+[node name="Animo" type="Path2D" parent="RacePaths/Animo"]
+curve = SubResource("Curve2D_ei6lu")
+
+[node name="RaceFollower" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(1, 0.501961, 0, 1)
 driver_name = "PIA"
 
-[node name="RaceFollower2" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower2" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(1, 0.501961, 0, 1)
 driver_name = "NOR"
 
-[node name="RaceFollower3" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower3" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.211765, 0.443137, 0.776471, 1)
 driver_name = "VER"
 
-[node name="RaceFollower4" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower4" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.152941, 0.956863, 0.823529, 1)
 driver_name = "RUS"
 
-[node name="RaceFollower5" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower5" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.909804, 0, 0.12549, 1)
 driver_name = "LEC"
 
-[node name="RaceFollower6" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower6" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.909804, 0, 0.12549, 1)
 driver_name = "HAM"
 
-[node name="RaceFollower7" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower7" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.152941, 0.956863, 0.823529, 1)
 driver_name = "ANT"
 
-[node name="RaceFollower8" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower8" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.392157, 0.768627, 1, 1)
 driver_name = "ALB"
 
-[node name="RaceFollower9" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower9" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.321569, 0.886275, 0.321569, 1)
 driver_name = "HUL"
 
-[node name="RaceFollower10" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower10" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.713726, 0.729412, 0.741176, 1)
 driver_name = "OCO"
 
-[node name="RaceFollower11" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower11" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.133333, 0.6, 0.443137, 1)
 driver_name = "ALO"
 
-[node name="RaceFollower12" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower12" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.133333, 0.6, 0.443137, 1)
 driver_name = "STR"
 
-[node name="RaceFollower13" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower13" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.4, 0.572549, 1, 1)
 driver_name = "HAD"
 
-[node name="RaceFollower14" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower14" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0, 0.576471, 0.8, 1)
 driver_name = "GAS"
 
-[node name="RaceFollower15" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower15" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.4, 0.572549, 1, 1)
 driver_name = "LAW"
 
-[node name="RaceFollower16" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower16" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.392157, 0.768627, 1, 1)
 driver_name = "SAI"
 
-[node name="RaceFollower17" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower17" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.321569, 0.886275, 0.321569, 1)
 driver_name = "BOR"
 
-[node name="RaceFollower18" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower18" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.211765, 0.443137, 0.776471, 1)
 driver_name = "TSU"
 
-[node name="RaceFollower19" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower19" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0.713726, 0.729412, 0.741176, 1)
 driver_name = "BEA"
 
-[node name="RaceFollower20" parent="RacePaths/Path2D" instance=ExtResource("4_6fqxo")]
-position = Vector2(10.2394, 17.3733)
+[node name="RaceFollower20" parent="RacePaths/Animo/Animo" instance=ExtResource("4_6fqxo")]
+position = Vector2(1368, 881)
 color = Color(0, 0.576471, 0.8, 1)
 driver_name = "COL"
 
+[node name="AnimoPit" type="Path2D" parent="RacePaths/Animo"]
+curve = SubResource("Curve2D_56m4r")
+
 [node name="FastestLap" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 704.0
@@ -180,14 +323,12 @@ offset_bottom = 128.0
 
 [node name="Background" type="ColorRect" parent="FastestLap"]
 layout_mode = 0
-offset_right = 832.0
 offset_bottom = 64.0
 color = Color(0.206554, 0.206554, 0.206554, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="FastestLap"]
 layout_mode = 0
 offset_right = 16.0
-offset_bottom = 64.0
 color = Color(1, 0, 1, 1)
 
 [node name="FastestLap" type="Label" parent="FastestLap"]
@@ -237,5 +378,75 @@ theme_override_fonts/font = ExtResource("5_8anos")
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpearGP" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 39.0
+offset_right = 272.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("5_8anos")
+theme_override_font_sizes/font_size = 24
+text = "S P E A R  G P"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RaceLights" type="Control" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 768.0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 128.0
+
+[node name="TextureRect" type="TextureRect" parent="RaceLights"]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+texture = ExtResource("7_c0tgo")
+
+[node name="TextureRect2" type="TextureRect" parent="RaceLights"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 56.0
+texture = ExtResource("7_c0tgo")
+
+[node name="TextureRect3" type="TextureRect" parent="RaceLights"]
+visible = false
+layout_mode = 0
+offset_left = 264.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 56.0
+texture = ExtResource("7_c0tgo")
+
+[node name="TextureRect4" type="TextureRect" parent="RaceLights"]
+visible = false
+layout_mode = 0
+offset_left = 392.0
+offset_top = 8.0
+offset_right = 440.0
+offset_bottom = 56.0
+texture = ExtResource("7_c0tgo")
+
+[node name="TextureRect5" type="TextureRect" parent="RaceLights"]
+visible = false
+layout_mode = 0
+offset_left = 520.0
+offset_top = 8.0
+offset_right = 568.0
+offset_bottom = 56.0
+texture = ExtResource("7_c0tgo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hc1tk")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
