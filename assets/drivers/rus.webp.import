@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0uh0ilco5xen"
-path="res://.godot/imported/Monte_Carlo_Formula_1_track_map.svg-1d5ac69c419ebcfe61c9017b58a2ec81.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://bgt47u5krksq1"
+valid=false
 
 [deps]
 
-source_file="res://assets/Monte_Carlo_Formula_1_track_map.svg"
-dest_files=["res://.godot/imported/Monte_Carlo_Formula_1_track_map.svg-1d5ac69c419ebcfe61c9017b58a2ec81.ctex"]
+source_file="res://assets/drivers/rus.webp"
 
 [params]
 
@@ -32,6 +28,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m224i46j4d4g"
-path="res://.godot/imported/Suzuka_circuit_map--2005.svg-fc550f5e4fae99a40f53fb25b3a29295.ctex"
+uid="uid://bikqhfdxwl1rq"
+path="res://.godot/imported/bhr.svg-05fde5d814839825fefda9261891455a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Suzuka_circuit_map--2005.svg"
-dest_files=["res://.godot/imported/Suzuka_circuit_map--2005.svg-fc550f5e4fae99a40f53fb25b3a29295.ctex"]
+source_file="res://assets/circuits/bhr.svg"
+dest_files=["res://.godot/imported/bhr.svg-05fde5d814839825fefda9261891455a.ctex"]
 
 [params]
 

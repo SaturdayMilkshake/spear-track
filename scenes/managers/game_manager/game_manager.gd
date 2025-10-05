@@ -8,8 +8,7 @@ extends Node
 
 @onready var position_manager: Node = $PositionManager
 
-@onready var time_label: Node = $TimeLabel
-@onready var score_label: Node = $ScoreLabel
+@onready var track_image: Node = $TrackImage
 
 @onready var fastest_lap_node: Node = $FastestLap
 @onready var fastest_lap_driver: Node = $FastestLap/DriverName
@@ -17,9 +16,16 @@ extends Node
 
 @onready var lap_label: Node = $LapCounter/LapLabel
 
-@onready var timer: Node = $Timer
+@onready var start_timer: Node = $StartTimer
 
 @onready var animation_player: Node = $AnimationPlayer
+
+@onready var race_followers: Node = $RaceFollowers
+
+@onready var race_paths: Node = $RacePaths
+
+@onready var track_data: Node = $TrackData
+@onready var driver_data: Node = $DriverData
 
 var score: int = 0
 var current_game_seconds: float = 0.0
@@ -28,61 +34,55 @@ var race_active: bool = false
 
 var current_lap: int = 1
 
-var driver_names: Dictionary = {
-	"PIA": "Oscar Piastri",
-	"NOR": "Lando Norris",
-	"LEC": "Charles Leclerc",
-	"HAM": "Lewis Hamilton",
-	"RUS": "George Russell",
-	"ANT": "Kimi Antonelli",
-	"VER": "Max Verstappen",
-	"TSU": "Yuki Tsunoda",
-	"ALB": "Alexander Albon",
-	"SAI": "Carlos Sainz",
-	"STR": "Lance Stroll",
-	"ALO": "Fernando Alonso",
-	"HUL": "Nico Hulkenburg",
-	"BOR": "Gabriel Bortoleto",
-	"LAW": "Liam Lawson",
-	"HAD": "Isack Hadjar",
-	"OCO": "Esteban Ocon",
-	"BEA": "Oliver Bearman",
-	"GAS": "Pierre Gasly",
-	"COL": "Franco Colapinto",
-}
-
 @export var track_data_preset: Dictionary = {}
 
+@export var track_string: String = ""
+
 var fastest_lap: float = 0.0
+
+# Race Presets
+var free_practice: bool = false
+var qualifying: bool = false
+var grand_prix: bool = false
+
+# Race Statuses
+var formation_lap: bool = false
+var safety_car_active: bool = false
+var virtual_safety_car_active: bool = false
+
+var overtakes_allowed: bool = true
 
 func _ready() -> void:
 	SignalHandler.connect("send_lap_time", Callable(self, "send_lap_time"))
 	SignalHandler.connect("send_leading_lap", Callable(self, "send_leading_lap"))
 	SignalHandler.connect("change_line_follower_path", Callable(self, "change_line_follower_path"))
+	set_initial_race_start_values(track_data.track_data_collection[track_string])
+	set_initial_track_paths(track_string)
+	set_race_follower_paths()
 		
 func _physics_process(_delta: float) -> void:
 	##TODO: fix this hot mess
-	if timer.time_left >= 4:
+	if start_timer.time_left >= 4:
 		$RaceLights/TextureRect.visible = true
-	elif timer.time_left >= 3:
+	elif start_timer.time_left >= 3:
 		$RaceLights/TextureRect.visible = true
 		$RaceLights/TextureRect2.visible = true
-	elif timer.time_left >= 2:
+	elif start_timer.time_left >= 2:
 		$RaceLights/TextureRect.visible = true
 		$RaceLights/TextureRect2.visible = true
 		$RaceLights/TextureRect3.visible = true
-	elif timer.time_left >= 1:
+	elif start_timer.time_left >= 1:
 		$RaceLights/TextureRect.visible = true
 		$RaceLights/TextureRect2.visible = true
 		$RaceLights/TextureRect3.visible = true
 		$RaceLights/TextureRect4.visible = true
-	elif timer.time_left > 0:
+	elif start_timer.time_left > 0:
 		$RaceLights/TextureRect.visible = true
 		$RaceLights/TextureRect2.visible = true
 		$RaceLights/TextureRect3.visible = true
 		$RaceLights/TextureRect4.visible = true
 		$RaceLights/TextureRect5.visible = true
-	elif timer.time_left <= 0:
+	elif start_timer.time_left <= 0:
 		$RaceLights/TextureRect.visible = false
 		$RaceLights/TextureRect2.visible = false
 		$RaceLights/TextureRect3.visible = false
@@ -101,21 +101,23 @@ func end_game() -> void:
 
 func restart_game() -> void:
 	pass
+	
+func set_race_follower_paths() -> void:
+	for race_follower: Node in race_followers.get_children():
+		race_follower.reparent(current_track_path)
 
 func send_lap_time(driver_name: String, time: float) -> void:
 	if fastest_lap <= 0.0:
-		fastest_lap_driver.text = driver_names[driver_name]
-		fastest_lap_time.text = "%10.3f" % [snapped(fmod(time, 60.0), 0.001)]
+		fastest_lap_driver.text = driver_data.driver_names[driver_name]
+		fastest_lap_time.text = "%d:%06.3f" % [floor(time / 60.0), snapped(fmod(time, 60.0), 0.001)]
 		fastest_lap = time
-		if !animation_player.is_playing():
-			animation_player.queue("ShowFastestLap")
+		animation_player.play("ShowFastestLap")
 		get_tree().call_group("position_item", "set_fastest_lap_anim", driver_name)
 	elif time < fastest_lap:
-		fastest_lap_driver.text = driver_names[driver_name]
-		fastest_lap_time.text = "%10.3f" % [snapped(fmod(time, 60.0), 0.001)]
+		fastest_lap_driver.text = driver_data.driver_names[driver_name]
+		fastest_lap_time.text = "%d:%06.3f" % [floor(time / 60.0), snapped(fmod(time, 60.0), 0.001)]
 		fastest_lap = time
-		if !animation_player.is_playing():
-			animation_player.queue("ShowFastestLap")
+		animation_player.play("ShowFastestLap")
 		get_tree().call_group("position_item", "set_fastest_lap_anim", driver_name)
 
 func update_lap_counter(lap: int) -> void:
@@ -131,7 +133,7 @@ func send_leading_lap(lap_number: int) -> void:
 		current_lap = lap_number
 		update_lap_counter(current_lap)
 
-func _on_timer_timeout() -> void:
+func _on_start_timer_timeout() -> void:
 	start_race()
 
 func change_line_follower_path(driver_name: String, type: String) -> void:
@@ -151,3 +153,20 @@ func change_line_follower_path(driver_name: String, type: String) -> void:
 			"pit":
 				target_node.reparent(current_pit_path)
 				target_node.set_pit_status(true)
+
+func activate_safety_car() -> void:
+	safety_car_active = true
+	
+func activate_virtual_safety_car() -> void:
+	virtual_safety_car_active = true
+
+func set_initial_race_start_values(track_data: Dictionary) -> void:
+	track_image.texture = load(track_data["track_image"])
+	max_laps = track_data["total_laps"]
+	position_manager.set_initial_item_values(track_data)
+
+func set_initial_track_paths(track: String) -> void:
+	var paths: Node = race_paths.get_node(track)
+	if paths:
+		current_track_path = paths.get_node("Track")
+		current_pit_path = paths.get_node("Pit")

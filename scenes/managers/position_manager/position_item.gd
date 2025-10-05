@@ -1,5 +1,7 @@
 extends Control
 
+@export var in_qualifying: bool = false
+
 @export var icon_texture: Texture = null
 @export var item_name: String = ""
 @export var inital_score: int = 0
@@ -10,6 +12,11 @@ extends Control
 @export var pit_entry_point: int = 1
 @export var pit_stoppage_point: int = 1
 @export var pit_exit_point: int = 1
+
+#Sectors
+@export var sector_1_point: int = 1
+@export var sector_2_point: int = 1
+@export var sector_3_point: int = 1
 
 @export var max_pit_stops: int = 2
 
@@ -22,9 +29,13 @@ extends Control
 @onready var fastest_lap_rect: Node = $FastestLapRect
 @onready var lap_time_offset: Node = $LapTimeOffset
 
+@onready var tire_label: Node = $TireLabel
+
 @onready var pit_timer: Node = $PitTimer
 
 @onready var animation_player: Node = $AnimationPlayer
+
+@onready var sectors: Node = $Sectors
 
 var success_probability: int = 100
 
@@ -35,6 +46,7 @@ var max_laps: int = 1
 var pit_score: int = 0
 
 var tire_type: String = "Soft"
+var tire_options: Array = ["Soft", "Medium", "Hard"]
 var tire_age: int = 0
 
 var lap_time: float = 0.0
@@ -42,17 +54,21 @@ var total_lap_time: float = 0.0
 var final_lap_time: float = 0.0
 var pit_time: float = 0.0
 var pit_stoppage_time: float = 0.0
+var self_fastest_lap: float = 0.0
 
 var processing_active: bool = false
 var unsortable: bool = false
 var final_lap_time_set: bool = false
 var current_fastest_lap: bool = false
 
-var pitting_next_lap: bool = false
+@export var pitting_next_lap: bool = false
 var in_pit: bool = false
 var pitted: bool = false
 
 var pit_stops: int = 0
+
+var sector_times: Array = [0.0, 0.0, 0.0]
+var fastest_sector_times: Array = [0.0, 0.0, 0.0]
 
 enum DriverState {
 	NORMAL,
@@ -78,6 +94,8 @@ func _physics_process(delta: float) -> void:
 		show_data("laps")
 	elif Input.is_action_just_pressed("show_tire_age"):
 		show_data("tire_age")
+	elif Input.is_action_just_pressed("show_success_probability"):
+		show_data("success_probability")
 	
 	if processing_active:
 		if check_score_success():
@@ -92,7 +110,6 @@ func _physics_process(delta: float) -> void:
 					if pit_score >= pit_step_length:
 						current_lap += 1
 						tire_age = 0
-						lap_time = 0.0
 						current_score = (current_lap - 1) * lap_step_length + pit_exit_point
 						in_pit = false
 						pitted = false
@@ -124,7 +141,16 @@ func _physics_process(delta: float) -> void:
 						animation_player.play("ShowFinish")
 				else:
 					current_lap += 1
-					tire_age += 1
+					if lap_time < self_fastest_lap:
+						self_fastest_lap = lap_time
+					elif self_fastest_lap <= 0.0:
+						self_fastest_lap = lap_time
+						
+					if in_qualifying:
+						pass
+					else:
+						tire_age += 1
+						
 					lap_time = 0.0
 					if !pitting_next_lap:
 						if check_pit_chance_success():
@@ -153,7 +179,7 @@ func check_pit_chance_success() -> bool:
 		return false
 	elif max_laps - current_lap <= 3:
 		return false
-	elif tire_age >= 25:
+	elif tire_age >= 20:
 		return true
 	elif pit_stops >= max_pit_stops:
 		return false
@@ -161,13 +187,23 @@ func check_pit_chance_success() -> bool:
 		return result <= 1 + (tire_age - 3)
 
 func reroll_success_probability() -> void:
-	success_probability = randi_range(5, 10) + tire_age
+	if !in_qualifying:
+		success_probability = randi_range(3, 7) + tire_age
+	else:
+		driver_performace_weight += 1
+		success_probability = randi_range(3, 7)
 
 func update_trailing_seconds(seconds: float) -> void:
-	if !in_pit:
-		lap_time_offset.text = "+%1.3f" % seconds
+	if !in_qualifying:
+		if !in_pit:
+			lap_time_offset.text = "+%1.3f" % seconds
+		else:
+			lap_time_offset.text = "IN PIT"
 	else:
-		lap_time_offset.text = "IN PIT"
+		if self_fastest_lap <= 0.0:
+			lap_time_offset.text = ""
+		else:
+			lap_time_offset.text = "+%1.3f" % seconds
 
 func set_leader_text(text: String) -> void:
 	lap_time_offset.text = text
@@ -187,10 +223,11 @@ func pit_item() -> void:
 func _on_pit_timer_timeout() -> void:
 	pitted = true
 	pit_stops += 1
+	set_tire_type()
 	success_probability = randi_range(30, 32)
 
 func check_weighted_score_success() -> bool:
-	var result: int = randi_range(0, 50)
+	var result: int = randi_range(0, 100)
 	return result <= driver_performace_weight
 
 func show_data(type: String) -> void:
@@ -201,4 +238,26 @@ func show_data(type: String) -> void:
 			data_displayer.text = str(pit_stops)
 		"tire_age":
 			data_displayer.text = str(tire_age)
+		"success_probability":
+			data_displayer.text = str(success_probability)
 	animation_player.play("ShowDataDisplayer")
+
+func set_tire_type() -> void:
+	tire_type = tire_options.pick_random()
+	match tire_type:
+		"Soft":
+			tire_label.text = "S"
+		"Medium":
+			tire_label.text = "M"
+		"Hard":
+			tire_label.text = "H"
+
+func set_item_compression_status(status: bool) -> void:
+	if status:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(self, "custom_minimum_size", Vector2(0, 40), 0.3).set_trans(Tween.TRANS_EXPO)
+	else:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(self, "custom_minimum_size", Vector2(0, 48), 0.3).set_trans(Tween.TRANS_SINE)
+
+	sectors.visible = !status

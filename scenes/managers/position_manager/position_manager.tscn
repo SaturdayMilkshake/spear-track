@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bobmchlly08fc"]
+[gd_scene load_steps=15 format=3 uid="uid://bobmchlly08fc"]
 
 [ext_resource type="Script" uid="uid://b5p6rr6mv3tao" path="res://scenes/managers/position_manager/position_manager.gd" id="1_kl7vh"]
 [ext_resource type="PackedScene" uid="uid://d323il54j7p2v" path="res://scenes/managers/position_manager/position_item.tscn" id="2_fh3pa"]
@@ -13,14 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://bcxtupeh6kfa" path="res://assets/logos/2025astonmartinlogowhite.png" id="10_0qsjd"]
 [ext_resource type="Texture2D" uid="uid://duddsya1yl8ji" path="res://assets/logos/2025racingbullslogowhite.png" id="11_yvmx1"]
 [ext_resource type="Texture2D" uid="uid://l6fr1bg215vi" path="res://assets/logos/2025alpinelogowhite.png" id="12_xoa7t"]
+[ext_resource type="FontFile" uid="uid://cn6nwaf08m6rf" path="res://assets/Formula1-Display-Bold-Bold/Formula1-Bold_web_0.ttf" id="14_hoyh0"]
 
 [node name="PositionManager" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 192.0
-offset_bottom = 704.0
+offset_right = 304.0
+offset_bottom = 1024.0
 script = ExtResource("1_kl7vh")
-global_position_offset = Vector2(32, 16)
+global_position_offset = Vector2(96, 48)
 
 [node name="TopBackground" type="ColorRect" parent="."]
 layout_mode = 0
@@ -33,209 +34,256 @@ layout_mode = 0
 offset_left = 32.0
 offset_top = 64.0
 offset_right = 224.0
-offset_bottom = 704.0
+offset_bottom = 1024.0
 theme_override_constants/separation = 0
+metadata/_edit_group_ = true
 
 [node name="PositionItem" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("3_ryrki")
 item_name = "PIA"
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 4
+max_pit_stops = 5
+driver_performace_weight = 12
 
 [node name="PositionItem2" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("3_ryrki")
 item_name = "NOR"
 inital_score = -5
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 4
+max_pit_stops = 5
+driver_performace_weight = 12
 
 [node name="PositionItem3" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("4_spn78")
 item_name = "VER"
 inital_score = -10
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 4
+max_pit_stops = 5
+driver_performace_weight = 12
 
 [node name="PositionItem4" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("5_jyeor")
 item_name = "RUS"
 inital_score = -15
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 4
+max_pit_stops = 5
+driver_performace_weight = 12
 
 [node name="PositionItem5" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("6_qlxpi")
 item_name = "LEC"
 inital_score = -20
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 4
+max_pit_stops = 5
+driver_performace_weight = 12
 
 [node name="PositionItem6" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("6_qlxpi")
 item_name = "HAM"
 inital_score = -25
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 3
+max_pit_stops = 5
+driver_performace_weight = 11
 
 [node name="PositionItem7" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("5_jyeor")
 item_name = "ANT"
 inital_score = -30
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 3
+max_pit_stops = 5
+driver_performace_weight = 11
 
 [node name="PositionItem8" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("7_8qtrc")
 item_name = "ALB"
 inital_score = -35
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 3
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem9" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem13" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("8_hoyh0")
-item_name = "HUL"
+in_qualifying = true
+icon_texture = ExtResource("11_yvmx1")
+item_name = "HAD"
 inital_score = -40
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 3
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem10" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem9" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("9_ecw1l")
-item_name = "OCO"
+in_qualifying = true
+icon_texture = ExtResource("8_hoyh0")
+item_name = "HUL"
 inital_score = -45
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 3
+max_pit_stops = 5
+driver_performace_weight = 11
 
 [node name="PositionItem11" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("10_0qsjd")
 item_name = "ALO"
 inital_score = -50
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 2
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem12" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem16" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("10_0qsjd")
-item_name = "STR"
+in_qualifying = true
+icon_texture = ExtResource("7_8qtrc")
+item_name = "SAI"
 inital_score = -55
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 2
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem13" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem12" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("11_yvmx1")
-item_name = "HAD"
+in_qualifying = true
+icon_texture = ExtResource("10_0qsjd")
+item_name = "STR"
 inital_score = -60
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 2
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem14" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem15" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("12_xoa7t")
-item_name = "GAS"
+in_qualifying = true
+icon_texture = ExtResource("11_yvmx1")
+item_name = "LAW"
 inital_score = -65
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 2
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem15" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem10" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("11_yvmx1")
-item_name = "LAW"
+in_qualifying = true
+icon_texture = ExtResource("9_ecw1l")
+item_name = "OCO"
 inital_score = -70
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
-driver_performace_weight = 2
+max_pit_stops = 5
+driver_performace_weight = 11
 
-[node name="PositionItem16" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem14" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("7_8qtrc")
-item_name = "SAI"
+in_qualifying = true
+icon_texture = ExtResource("12_xoa7t")
+item_name = "GAS"
 inital_score = -75
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
+max_pit_stops = 5
+driver_performace_weight = 10
 
-[node name="PositionItem17" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem18" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("8_hoyh0")
-item_name = "BOR"
+in_qualifying = true
+icon_texture = ExtResource("4_spn78")
+item_name = "TSU"
 inital_score = -80
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
+max_pit_stops = 5
+driver_performace_weight = 10
 
-[node name="PositionItem18" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
+[node name="PositionItem17" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
-icon_texture = ExtResource("4_spn78")
-item_name = "TSU"
+in_qualifying = true
+icon_texture = ExtResource("8_hoyh0")
+item_name = "BOR"
 inital_score = -85
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
+max_pit_stops = 5
+driver_performace_weight = 10
 
 [node name="PositionItem19" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("9_ecw1l")
 item_name = "BEA"
 inital_score = -90
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
+max_pit_stops = 5
+driver_performace_weight = 10
 
 [node name="PositionItem20" parent="PositionContainer" instance=ExtResource("2_fh3pa")]
 layout_mode = 2
+in_qualifying = true
 icon_texture = ExtResource("12_xoa7t")
 item_name = "COL"
 inital_score = -95
 pit_entry_point = 2275
 pit_stoppage_point = 198
 pit_exit_point = 123
+max_pit_stops = 5
+driver_performace_weight = 10
 
 [node name="PositonCountContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 32.0
-offset_bottom = 704.0
+offset_bottom = 1024.0
 theme_override_constants/separation = 0
+metadata/_edit_group_ = true
 
 [node name="PositionCount" parent="PositonCountContainer" instance=ExtResource("3_fh3pa")]
 layout_mode = 2
@@ -319,5 +367,29 @@ layout_mode = 2
 position_count = 20
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="SpearGP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 216.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("14_hoyh0")
+theme_override_font_sizes/font_size = 22
+text = "S P E A R  W D C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(224, -4, -4, -4, -4, 1024)
+default_color = Color(0.25098, 0.25098, 0.25098, 1)
+joint_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 28.0
+offset_right = 223.0
+offset_bottom = 32.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

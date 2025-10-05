@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cti101ii42y8u"
-path="res://.godot/imported/Zandvoort_Circuit.png-df9a5e2cd78602947e940ef1045138c6.ctex"
+uid="uid://cs3cr4xj6qb3c"
+path="res://.godot/imported/str.png-1080bf32e6aa988847311591ea233f20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Zandvoort_Circuit.png"
-dest_files=["res://.godot/imported/Zandvoort_Circuit.png-df9a5e2cd78602947e940ef1045138c6.ctex"]
+source_file="res://assets/drivers/str.png"
+dest_files=["res://.godot/imported/str.png-1080bf32e6aa988847311591ea233f20.ctex"]
 
 [params]
 

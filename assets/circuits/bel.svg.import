@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8842pdt871w4"
-path="res://.godot/imported/animo_circuit.png-6f42e1e4a37ca6959da6c01bb862db61.ctex"
+uid="uid://bfgkmo0cwowsp"
+path="res://.godot/imported/bel.svg-0d658fb7e712b7acc4d042a05cdc4d6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animo_circuit.png"
-dest_files=["res://.godot/imported/animo_circuit.png-6f42e1e4a37ca6959da6c01bb862db61.ctex"]
+source_file="res://assets/circuits/bel.svg"
+dest_files=["res://.godot/imported/bel.svg-0d658fb7e712b7acc4d042a05cdc4d6b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
